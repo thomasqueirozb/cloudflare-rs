@@ -109,8 +109,18 @@ pub enum Status {
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "lowercase", tag = "type")]
 pub enum Owner {
-    User { id: String, email: String },
-    Organization { id: String, name: String },
+    User {
+        #[serde(default = "String::new")]
+        id: String,
+        #[serde(default = "String::new")]
+        email: String,
+    },
+    Organization {
+        #[serde(default = "String::new")]
+        id: String,
+        #[serde(default = "String::new")]
+        name: String,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
